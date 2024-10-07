@@ -1,19 +1,22 @@
-const { mongo } = require("mongoose");
 const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
   //#swagger.tags=['Get All Credentials']
-  mongodb
+
+  const result = await mongodb
     .getDatabase()
     .db()
     .collection("game_credentials")
-    .find()
-    .toArray((err, credential) => {
+    .find();
+
+  result
+    .toArray((err, status) => {
       if (err) {
         res.status(400).json({ message: err });
       }
-
+    })
+    .then((credential) => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(credential);
     });
@@ -21,19 +24,26 @@ const getAll = async (req, res) => {
 
 const getOne = async (req, res) => {
   //#swagger.tags=['Get One Credential by ID']
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("Must use a valid contact id to find a contact.");
+  }
+
   const userId = ObjectId.createFromHexString(req.params.id);
-  mongodb
+  const result = await mongodb
     .getDatabase()
     .db()
     .collection("game_credentials")
-    .find({ _id: userId })
-    .toArray((err, credential) => {
+    .find({ id: userId });
+
+  result
+    .toArray((err, status) => {
       if (err) {
         res.status(400).json({ message: err });
       }
-
+    })
+    .then((credential) => {
       res.setHeader("Content-Type", "application/json");
-      res.status(200).json(credential);
+      res.status(200).json(credential[0]);
     });
 };
 
@@ -66,6 +76,12 @@ const createCredential = async (req, res) => {
 
 const updateCredential = async (req, res) => {
   //#swagger.tags=['Update Credentials']
+  if (!ObjectId.isValid(req.params.id)) {
+    res
+      .status(400)
+      .json("Must use a valid credential ID to update credential.");
+  }
+
   const userId = ObjectId.createFromHexString(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -94,6 +110,12 @@ const updateCredential = async (req, res) => {
 
 const deleteCredential = async (req, res) => {
   //#swagger.tags=['Delete Credential']
+  if (!ObjectId.isValid(req.params.id)) {
+    res
+      .status(400)
+      .json("Must use a valid credential ID to delete credential.");
+  }
+
   const userId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
     .getDatabase()

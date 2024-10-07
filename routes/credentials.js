@@ -10,10 +10,18 @@ router.get("/", credentialsController.getAll);
 router.get("/:id", credentialsController.getOne);
 
 //Create credential
-router.post("/", validation.validateCreate, credentialsController.createCredential);
+router.post(
+  "/",
+  validation.validateBody,
+  credentialsController.createCredential
+);
 
 //Update credential
-router.put("/:id", validation.validateCreate, credentialsController.updateCredential);
+router.put(
+  "/:id",
+  validation.validateBody,
+  credentialsController.updateCredential
+);
 
 //Delete Credential
 router.delete("/:id", credentialsController.deleteCredential);
