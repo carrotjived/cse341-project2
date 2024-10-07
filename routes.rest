@@ -50,3 +50,41 @@ DELETE http://localhost:3000/credentials/ HTTP/1.1
 
 
 //PRODUCTION 
+###Get all credentials
+
+GET https://cse341-project2-68l5.onrender.com/credentials
+
+###Get credentials by id
+GET https://cse341-project2-68l5.onrender.com/
+
+###Create credentials
+POST https://cse341-project2-68l5.onrender.com/credentials/ HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "sljfowiej",
+    "lastName": "any",
+    "userName": "Hailmighter",
+    "password": "any",
+    "email": "any",
+    "nickName": "any",
+    "gender": "any"
+}
+
+###Update credentials by Id
+
+PUT https://cse341-project2-68l5.onrender.com/credentials/ HTTP/1.1
+Content-Type: application/json
+
+{
+   "firstName": "Victor Jared",
+    "lastName": "Onato",
+    "userName": "Hailmighter",
+    "password": "asdlkfasdfasdfsdf",
+    "email": "alkdsjf@gmail.com",
+    "nickName": "ButeteNinja",
+    "gender": "male"
+}
+
+###Delete credentials by id
+DELETE https://cse341-project2-68l5.onrender.com/credentials/ HTTP/1.1
