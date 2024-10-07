@@ -33,7 +33,7 @@ const getOne = async (req, res) => {
     .getDatabase()
     .db()
     .collection("game_credentials")
-    .find({ id: userId });
+    .find({ _id: userId });
 
   result
     .toArray((err, status) => {
