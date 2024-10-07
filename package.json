@@ -26,6 +26,10 @@
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.7",
     "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "@types/validatorjs": "^3.15.5"
   }
 }

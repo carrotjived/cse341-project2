@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const credentialsController = require("../controllers/credentials");
+const validation = require("../middlewares/validator");
 
 //Get All Credentials
 router.get("/", credentialsController.getAll);
@@ -9,10 +10,10 @@ router.get("/", credentialsController.getAll);
 router.get("/:id", credentialsController.getOne);
 
 //Create credential
-router.post("/", credentialsController.createCredential);
+router.post("/", validation.validateCreate, credentialsController.createCredential);
 
 //Update credential
-router.put("/:id", credentialsController.updateCredential);
+router.put("/:id", validation.validateCreate, credentialsController.updateCredential);
 
 //Delete Credential
 router.delete("/:id", credentialsController.deleteCredential);
