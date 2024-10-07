@@ -6,6 +6,6 @@ router.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-router.use("/credentials", require("./credentials"));
+router.use("/credential", require("./credentials"));
 
 module.exports = router;

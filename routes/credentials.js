@@ -9,13 +9,12 @@ router.get("/", credentialsController.getAll);
 router.get("/:id", credentialsController.getOne);
 
 //Create credential
-router.get("/", credentialsController.createCredential);
+router.post("/", credentialsController.createCredential);
 
 //Update credential
-router.get("/:id", credentialsController.updateCredential);
+router.put("/:id", credentialsController.updateCredential);
 
 //Delete Credential
-router.get("/", credentialsController.deleteCredential);
+router.delete("/", credentialsController.deleteCredential);
 
-
-
+module.exports = router;

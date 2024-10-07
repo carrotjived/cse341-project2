@@ -3,6 +3,7 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
+  //#swagger.tags=['Get All Credentials']
   const result = await mongodb
     .getDatabase()
     .db()
@@ -14,7 +15,9 @@ const getAll = async (req, res) => {
   });
 };
 
+
 const getOne = async (req, res) => {
+  //#swagger.tags=['Get One Credential by ID']
   const userId = ObjectId.createFromHexString(req.params.id);
   const result = await mongodb
     .getDatabase()
@@ -28,6 +31,7 @@ const getOne = async (req, res) => {
 };
 
 const createCredential = async (req, res) => {
+  //#swagger.tags=['Create Credential']
   const credential = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -54,7 +58,7 @@ const createCredential = async (req, res) => {
 };
 
 const updateCredential = async (req, res) => {
-  //#swagger.tags=['Contacts']
+  //#swagger.tags=['Update Credentials']
   const userId = ObjectId.createFromHexString(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -82,7 +86,7 @@ const updateCredential = async (req, res) => {
 };
 
 const deleteCredential = async (req, res) => {
-  //#swagger.tags=['Contacts']
+  //#swagger.tags=['Delete Credential']
   const userId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
     .getDatabase()
