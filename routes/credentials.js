@@ -15,6 +15,6 @@ router.post("/", credentialsController.createCredential);
 router.put("/:id", credentialsController.updateCredential);
 
 //Delete Credential
-router.delete("/", credentialsController.deleteCredential);
+router.delete("/:id", credentialsController.deleteCredential);
 
 module.exports = router;

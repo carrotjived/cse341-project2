@@ -15,7 +15,6 @@ const getAll = async (req, res) => {
   });
 };
 
-
 const getOne = async (req, res) => {
   //#swagger.tags=['Get One Credential by ID']
   const userId = ObjectId.createFromHexString(req.params.id);
@@ -73,7 +72,7 @@ const updateCredential = async (req, res) => {
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection("contacts")
+    .collection("game_credentials")
     .replaceOne({ _id: userId }, contact);
 
   if (response.modifiedCount > 0) {
@@ -91,7 +90,7 @@ const deleteCredential = async (req, res) => {
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection("contacts")
+    .collection("game_credentials")
     .deleteOne({ _id: userId });
 
   if (response.deletedCount > 0) {

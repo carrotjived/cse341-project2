@@ -8,7 +8,7 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http","https"
   ],
   "paths": {
     "/": {
@@ -94,20 +94,6 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Delete Credential"
-        ],
-        "description": "",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       }
     },
     "/credentials/{id}": {
@@ -174,6 +160,28 @@
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Delete Credential"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
