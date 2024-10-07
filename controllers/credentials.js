@@ -4,29 +4,37 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
   //#swagger.tags=['Get All Credentials']
-  const result = await mongodb
+  mongodb
     .getDatabase()
     .db()
     .collection("game_credentials")
-    .find();
-  result.toArray().then((credential) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(credential);
-  });
+    .find()
+    .toArray((err, credential) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(credential);
+    });
 };
 
 const getOne = async (req, res) => {
   //#swagger.tags=['Get One Credential by ID']
   const userId = ObjectId.createFromHexString(req.params.id);
-  const result = await mongodb
+  mongodb
     .getDatabase()
     .db()
     .collection("game_credentials")
-    .find({ _id: userId });
-  result.toArray().then((credential) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(credential[0]);
-  });
+    .find({ _id: userId })
+    .toArray((err, credential) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(credential);
+    });
 };
 
 const createCredential = async (req, res) => {
