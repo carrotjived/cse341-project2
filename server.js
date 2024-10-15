@@ -4,7 +4,7 @@ const mongodb = require("./data/database.js");
 const app = express();
 const cors = require("cors");
 const passport = require("passport");
-const session = require("cookie-session");
+const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
 
 const port = process.env.PORT || 3000;
@@ -70,7 +70,6 @@ app.get("/", (req, res) => {
       ? `Logged in as ${req.session.user.displayName}`
       : "Logged Out"
   );
-  console.log(req.session.user);
 });
 
 app.get(
