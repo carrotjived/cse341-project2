@@ -4,7 +4,7 @@ const mongodb = require("./data/database.js");
 const app = express();
 const cors = require("cors");
 const passport = require("passport");
-const session = require("express-session");
+const session = require("cookie-session");
 const GitHubStrategy = require("passport-github2").Strategy;
 
 const port = process.env.PORT || 3000;
