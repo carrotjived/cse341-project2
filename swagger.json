@@ -5,7 +5,7 @@
     "description": "Game Credentials API",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project2-68l5.onrender.com",
+  "host": "cse341-project2-68l5.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
